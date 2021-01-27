@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using VerifyTests;
 using VerifyNUnit;
 using NUnit.Framework;
@@ -9,6 +10,8 @@ public class Tests
     static Tests()
     {
         VerifyDiffPlex.Initialize();
+        VerifierSettings.ModifySerialization(
+            settings => settings.IgnoreMember<Exception>(_ => _.StackTrace));
     }
 
     [Test]
@@ -16,6 +19,8 @@ public class Tests
     {
         var settings = new VerifySettings();
         settings.UseMethodName("Foo");
+        settings.DisableDiff();
+        settings.DisableClipboard();
 
         await Verifier.Verify(
                 @"The
@@ -24,11 +29,21 @@ text", settings)
             .AutoVerify();
 
         FileNameBuilder.ClearPrefixList();
-
-        await Verifier.Verify(
-            @"The
+        var exception = Assert.ThrowsAsync<Exception>(() =>
+            Verifier.Verify(
+                @"The
 after
 text",
-            settings);
+                settings));
+        await Verifier.Verify(exception!.Message);
+    }
+
+    [Test]
+    public async Task Sample()
+    {
+        var target = @"The
+after
+text";
+        await Verifier.Verify(target);
     }
 }

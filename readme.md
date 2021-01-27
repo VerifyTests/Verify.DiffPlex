@@ -38,33 +38,21 @@ Call `VerifyDiffPlex.Initialize()` once at assembly load time.
 Given an existing verified file:
 
 ```
-<!DOCTYPE html>
-<html>
-<body>
-  <h1>My First Heading</h1>
-  <p>My first paragraph.</p>
-</body>
-</html>
+The
+before
+text
 ```
 
 And a test:
 
 ```cs
 [Test]
-public Task Sample()
+public async Task Sample()
 {
-    var settings = new VerifySettings();
-    settings.UseExtension("html");
-    var html = @"<!DOCTYPE html>
-<html>
-<body>
-
-<h1>My First Heading</h1>
-<p>My first paragraph.</p>
-
-</body>
-</html>";
-    return Verifier.Verify(html, settings);
+    var target = @"The
+after
+text";
+    await Verifier.Verify(target);
 }
 ```
 
@@ -73,14 +61,16 @@ public Task Sample()
 
 If the comparison fails, the resulting differences will be included in the test result displayed to the user.
 
-For example if, in the above html, `<h1>My First Heading</h1>` changes to `<h1>First Heading</h1>` then the following will be printed in the test results:
-
-```
-Comparer result:
- * Node Diff
-   Path: h1(0) > #text(0)
-   Received: First Heading
-   Verified: My First Heading
+```txt
+Results do not match.
+Differences:
+Received: Tests.Sample.received.txt
+Verified: Tests.Sample.verified.txt
+Compare Result:
+  The
+- before
++ after
+  text
 ```
 
 

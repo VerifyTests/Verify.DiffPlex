@@ -1,6 +1,6 @@
 # <img src="/src/icon.png" height="30px"> Verify.DiffPlex
 
-[![Build status](https://ci.appveyor.com/api/projects/status/ff4ms9mevndkui7l?svg=true)](https://ci.appveyor.com/project/SimonCropp/Verify-DiffPlex)
+[![Build status](https://ci.appveyor.com/api/projects/status/9ug1ufa69m4vf4ph?svg=true)](https://ci.appveyor.com/project/SimonCropp/Verify-DiffPlex)
 [![NuGet Status](https://img.shields.io/nuget/v/Verify.DiffPlex.svg)](https://www.nuget.org/packages/Verify.DiffPlex/)
 
 Extends [Verify](https://github.com/VerifyTests/Verify) to allow [comparison](https://github.com/VerifyTests/Verify/blob/master/docs/comparer.md) of text files via [DiffPlex](https://github.com/mmanela/diffplex).
@@ -59,7 +59,7 @@ text";
 
 ### Diff results
 
-If the comparison fails, the resulting differences will be included in the test result displayed to the user.
+When the comparison fails, the resulting differences will be included in the test result displayed to the user.
 
 ```txt
 Results do not match.

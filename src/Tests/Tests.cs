@@ -35,7 +35,8 @@ text", settings)
 after
 text",
                 settings));
-        await Verifier.Verify(exception!.Message);
+        await Verifier.Verify(exception!.Message)
+            .ScrubLinesContaining("DiffEngineTray");
     }
 
     [Test]

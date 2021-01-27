@@ -1,5 +1,4 @@
 Results do not match.
-Use DiffEngineTray to verify files.
 Differences:
 Received: Tests.Foo.received.txt
 Verified: Tests.Foo.verified.txt

@@ -10,6 +10,7 @@ public class Tests
     static Tests()
     {
         VerifyDiffPlex.Initialize();
+        VerifierSettings.DisableClipboard();
         VerifierSettings.ModifySerialization(
             settings => settings.IgnoreMember<Exception>(_ => _.StackTrace));
     }
@@ -20,7 +21,6 @@ public class Tests
         var settings = new VerifySettings();
         settings.UseMethodName("Foo");
         settings.DisableDiff();
-        settings.DisableClipboard();
 
         await Verifier.Verify(
                 @"The

@@ -29,13 +29,12 @@ text", settings)
             .AutoVerify();
 
         FileNameBuilder.ClearPrefixList();
-        var exception = Assert.ThrowsAsync<Exception>(() =>
-            Verifier.Verify(
-                @"The
+        await Verifier.ThrowsTask(() =>
+                Verifier.Verify(
+                    @"The
 after
 text",
-                settings));
-        await Verifier.Verify(exception!.Message)
+                    settings))
             .ScrubLinesContaining("DiffEngineTray");
     }
 

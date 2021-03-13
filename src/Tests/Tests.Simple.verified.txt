@@ -1,0 +1,11 @@
+Results do not match.
+Differences:
+Received: Tests.Foo.received.txt
+Verified: Tests.Foo.verified.txt
+Compare Result:
+  The
+- before
++ after
+  text
+
+

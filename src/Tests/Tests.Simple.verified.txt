@@ -1,6 +1,6 @@
-{
+﻿{
   Type: VerifyException,
-  Message: 
+  Message:
 Results do not match.
 Differences:
 Received: Tests.Foo.received.txt

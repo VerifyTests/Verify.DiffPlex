@@ -1,6 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using VerifyTests;
+﻿using VerifyTests;
 using VerifyNUnit;
 using NUnit.Framework;
 
@@ -22,13 +20,6 @@ public class Tests
         settings.UseMethodName("Foo");
         settings.DisableDiff();
 
-        await Verifier.Verify(
-                @"The
-before
-text", settings)
-            .AutoVerify();
-
-        FileNameBuilder.ClearPrefixList();
         await Verifier.ThrowsTask(() =>
                 Verifier.Verify(
                     @"The

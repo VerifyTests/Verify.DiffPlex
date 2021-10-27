@@ -1,0 +1,25 @@
+﻿{
+  Type: VerifyException,
+  Message:
+Results do not match.
+Differences:
+Received: Tests.Bar.received.txt
+Verified: Tests.Bar.verified.txt
+Compare Result:
+01   Line1
+   - Line2
+   + Line2 - changed
+03   Line3
+
+05   Line5
+   + Line5a - added
+07   Line6
+
+09   Line8
+   - Line9
+10   Line10
+
+
+
+
+}

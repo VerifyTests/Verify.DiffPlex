@@ -42,7 +42,7 @@ text";
     [Test]
     public async Task Compact()
     {
-        VerifyDiffPlex.Initialize(compact: true);
+        VerifyDiffPlex.Initialize(OutputType.Compact);
         var settings = new VerifySettings();
         settings.UseMethodName("Bar");
         settings.DisableDiff();
@@ -61,6 +61,5 @@ Line8
 Line10",
                     settings))
             .ScrubLinesContaining("DiffEngineTray");
-
     }
 }

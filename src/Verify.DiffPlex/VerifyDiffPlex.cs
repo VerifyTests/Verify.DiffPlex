@@ -3,19 +3,27 @@ using DiffPlex.DiffBuilder.Model;
 
 namespace VerifyTests;
 
+public enum OutputType { Full, Compact }
+
 public static class VerifyDiffPlex
 {
-    public static void Initialize(bool compact = false)
+    public static void Initialize() => Initialize(OutputType.Full);
+    
+    public static void Initialize(OutputType outputType)
     {
+        Func<string, string, StringBuilder> compareFunc = outputType switch
+        {
+            OutputType.Compact => CompactCompare,
+            _ => VerboseCompare,
+        };
+        
         VerifierSettings.SetDefaultStringComparer((received, verified, _) =>
         {
-            Func<string, string, StringBuilder> compareFunc = compact ? CompactCompare : VerboseCompare;
             var builder = compareFunc(received, verified);
             
             var compareResult = CompareResult.NotEqual(builder.ToString());
             return Task.FromResult(compareResult);
         });
-
     }
 
     private static StringBuilder VerboseCompare(string received, string verified)

@@ -6,19 +6,26 @@ Differences:
 Received: Tests.Bar.received.txt
 Verified: Tests.Bar.verified.txt
 Compare Result:
-01   Line1
-   - Line2
-   + Line2 - changed
-03   Line3
+     [BOF]
+   - Line 1
+   + Line 1 changed
+02   Line 2
 
-05   Line5
-   + Line5a - added
-07   Line6
+04   Line 4
+   - Line 5
+   + Line 5 changed
+06   Line 6
+   - Line 7
+   + Added
+   + Line 7 changed
+09   Line 8
 
-09   Line8
-   - Line9
-10   Line10
-
+11   Line 10
+   - Line 11
+   - Line 12
+   + Line 11 changed
+   + Line 12 changed
+     [EOF]
 
 
 

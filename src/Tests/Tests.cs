@@ -49,16 +49,19 @@ text";
 
         await Verifier.ThrowsTask(() =>
                 Verifier.Verify(
-                    @"Line1
-Line2 - changed
-Line3
-Line4
-Line5
-Line5a - added
-Line6
-Line7
-Line8
-Line10",
+                    @"Line 1 changed
+Line 2
+Line 3
+Line 4
+Line 5 changed
+Line 6
+Added
+Line 7 changed
+Line 8
+Line 9
+Line 10
+Line 11 changed
+Line 12 changed",
                     settings))
             .ScrubLinesContaining("DiffEngineTray");
     }

@@ -61,36 +61,38 @@ public static class VerifyDiffPlex
 
         bool IsChanged(DiffPiece? line) => line?.Type == ChangeType.Inserted || line?.Type == ChangeType.Deleted;
 
-        void AddToBuilder(int? lineNumber, string symbol, string text)
+        void AddDiffLine(int? lineNumber, string symbol, string text)
         {
             var padding = lineNumber?.ToString("D" + paddingLength) ?? defaultPadding;
             builder.AppendLine($"{padding} {symbol} {text}");
         }
 
         DiffPiece? prevLine = null;
-        for (int i = 0; i < diff.Lines.Count; i++)
+        int lastIndex = diff.Lines.Count - 1;
+
+        for (int i = 0; i <= lastIndex; i++)
         {
             var currentLine = diff.Lines[i];
-            var nextLine = i < diff.Lines.Count - 1
+            var nextLine = i < lastIndex
                 ? diff.Lines[i + 1]
                 : null;
 
-            switch (currentLine.Type)
+            if (IsChanged(currentLine))
             {
-                case ChangeType.Inserted:
-                    AddToBuilder(null, "+", currentLine.Text);
-                    break;
-                case ChangeType.Deleted:
-                    AddToBuilder(null, "-", currentLine.Text);
-                    break;
-                default:
-                    if (IsChanged(prevLine) || IsChanged(nextLine))
-                    {
-                        AddToBuilder(currentLine.Position, " ", currentLine.Text);
-                        if (IsChanged(prevLine))
-                            builder.AppendLine();
-                    }
-                    break;
+                if (i == 0)
+                    AddDiffLine(null, " ", "[BOF]");
+
+                var symbol = currentLine.Type == ChangeType.Inserted ? "+" : "-";
+                AddDiffLine(null, symbol, currentLine.Text);
+
+                if (i == lastIndex)
+                    AddDiffLine(null, " ", "[EOF]");
+            }
+            else if (IsChanged(prevLine) || IsChanged(nextLine))
+            {
+                AddDiffLine(currentLine.Position, " ", currentLine.Text);
+                if (!IsChanged(nextLine))
+                    builder.AppendLine();
             }
 
             prevLine = currentLine;

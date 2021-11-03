@@ -67,7 +67,7 @@ Compare Result:
 
 The library currently supports two different types of diff outputs; the desired type can be specified during library initialization.
 
-`OutputType.Full` is the default. It shows the full contents of the verified file, with differences with the received file indicated by `+` and `-`. Here's an example of `Full` output.
+`OutputType.Full` is the default. It shows the full contents of the received file, with differences with the received file indicated by `+` and `-`. Here's an example of `Full` output.
 
 ```
   First line
@@ -82,16 +82,16 @@ The library currently supports two different types of diff outputs; the desired 
   Eighth line
 ```
 
-This output type gives the most information, but if your verified files are long, it can be difficult to read through and find the actual differences. `OutputType.Compact` will show only the changed lines, with one line of context before and after each changed section. The `Full` output above would look like this as `Compact`.
+This output type gives the most information, but if your verified files are long, it can be difficult to read through and find the actual differences. `OutputType.Compact` will show only the changed lines, with one line of context (with line number) before and after each changed section to help identify where the change is. The `Full` output above would look like this as `Compact`.
 
 ```
-1   First line
-  - Second line
-  + Second line changed
-3   Third line
+1 First line
+- Second line
++ Second line changed
+3 Third line
 
-5   Fifth line
-  - Sixth line
-  + Sixth line changed
-7   Seventh line
+5 Fifth line
+- Sixth line
++ Sixth line changed
+7 Seventh line
 ```

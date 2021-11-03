@@ -56,15 +56,15 @@ public static class VerifyDiffPlex
         var diff = InlineDiffBuilder.Diff(verified, received);
         var builder = new StringBuilder();
 
-        var paddingLength = diff.Lines.Max(l => l.Position).ToString().Length;
-        var defaultPadding = new String(' ', paddingLength);
+        var prefixLength = diff.Lines.Max(l => l.Position).ToString().Length;
+        var spacePrefix = new String(' ', prefixLength - 1);
 
         bool IsChanged(DiffPiece? line) => line?.Type == ChangeType.Inserted || line?.Type == ChangeType.Deleted;
 
         void AddDiffLine(int? lineNumber, string symbol, string text)
         {
-            var padding = lineNumber?.ToString("D" + paddingLength) ?? defaultPadding;
-            builder.AppendLine($"{padding} {symbol} {text}");
+            var prefix = lineNumber?.ToString("D" + prefixLength) ?? spacePrefix + symbol;
+            builder.AppendLine($"{prefix} {text}");
         }
 
         DiffPiece? prevLine = null;

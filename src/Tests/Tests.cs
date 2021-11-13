@@ -13,14 +13,14 @@ public class Tests
     }
 
     [Test]
-    public async Task Simple()
+    public Task Simple()
     {
         VerifyDiffPlex.Initialize();
         var settings = new VerifySettings();
         settings.UseMethodName("Foo");
         settings.DisableDiff();
 
-        await Verifier.ThrowsTask(() =>
+        return Verifier.ThrowsTask(() =>
                 Verifier.Verify(
                     @"The
 after
@@ -30,24 +30,24 @@ text",
     }
 
     [Test]
-    public async Task Sample()
+    public Task Sample()
     {
         VerifyDiffPlex.Initialize();
         var target = @"The
 after
 text";
-        await Verifier.Verify(target);
+        return Verifier.Verify(target);
     }
 
     [Test]
-    public async Task Compact()
+    public Task Compact()
     {
         VerifyDiffPlex.Initialize(OutputType.Compact);
         var settings = new VerifySettings();
         settings.UseMethodName("Bar");
         settings.DisableDiff();
 
-        await Verifier.ThrowsTask(() =>
+        return Verifier.ThrowsTask(() =>
                 Verifier.Verify(
                     @"Line 1 changed
 Line 2

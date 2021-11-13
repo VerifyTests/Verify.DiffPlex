@@ -7,7 +7,6 @@ public class Tests
 {
     static Tests()
     {
-        VerifyDiffPlex.Initialize();
         VerifierSettings.DisableClipboard();
         VerifierSettings.ModifySerialization(
             settings => settings.IgnoreMember<Exception>(_ => _.StackTrace));
@@ -16,6 +15,7 @@ public class Tests
     [Test]
     public async Task Simple()
     {
+        VerifyDiffPlex.Initialize();
         var settings = new VerifySettings();
         settings.UseMethodName("Foo");
         settings.DisableDiff();
@@ -32,9 +32,37 @@ text",
     [Test]
     public async Task Sample()
     {
+        VerifyDiffPlex.Initialize();
         var target = @"The
 after
 text";
         await Verifier.Verify(target);
+    }
+
+    [Test]
+    public async Task Compact()
+    {
+        VerifyDiffPlex.Initialize(OutputType.Compact);
+        var settings = new VerifySettings();
+        settings.UseMethodName("Bar");
+        settings.DisableDiff();
+
+        await Verifier.ThrowsTask(() =>
+                Verifier.Verify(
+                    @"Line 1 changed
+Line 2
+Line 3
+Line 4
+Line 5 changed
+Line 6
+Added
+Line 7 changed
+Line 8
+Line 9
+Line 10
+Line 11 changed
+Line 12 changed",
+                    settings))
+            .ScrubLinesContaining("DiffEngineTray");
     }
 }

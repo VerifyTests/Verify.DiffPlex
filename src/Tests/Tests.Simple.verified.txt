@@ -10,6 +10,4 @@ Compare Result:
 - before
 + after
   text
-
-
 }

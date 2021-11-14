@@ -26,6 +26,4 @@ Compare Result:
  + Line 11 changed
  + Line 12 changed
    [EOF]
-
-
 }

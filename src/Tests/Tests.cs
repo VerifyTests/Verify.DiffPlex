@@ -8,6 +8,7 @@ public class Tests
     static Tests()
     {
         VerifierSettings.DisableClipboard();
+        VerifierSettings.ScrubLinesContaining("DiffEngineTray");
         VerifierSettings.ModifySerialization(
             settings => settings.IgnoreMember<Exception>(_ => _.StackTrace));
     }
@@ -25,8 +26,7 @@ public class Tests
                     @"The
 after
 text",
-                    settings))
-            .ScrubLinesContaining("DiffEngineTray");
+                    settings));
     }
 
     [Test]
@@ -62,7 +62,6 @@ Line 9
 Line 10
 Line 11 changed
 Line 12 changed",
-                    settings))
-            .ScrubLinesContaining("DiffEngineTray");
+                    settings));
     }
 }

@@ -3,8 +3,6 @@ using DiffPlex.DiffBuilder.Model;
 
 namespace VerifyTests;
 
-public enum OutputType { Full, Compact }
-
 public static class VerifyDiffPlex
 {
     public static void Initialize() => Initialize(OutputType.Full);
@@ -20,8 +18,9 @@ public static class VerifyDiffPlex
         VerifierSettings.SetDefaultStringComparer((received, verified, _) =>
         {
             var builder = compareFunc(received, verified);
-
-            var compareResult = CompareResult.NotEqual(builder.ToString());
+            builder.TrimEnd();
+            var message = builder.ToString();
+            var compareResult = CompareResult.NotEqual(message);
             return Task.FromResult(compareResult);
         });
     }
@@ -104,7 +103,7 @@ public static class VerifyDiffPlex
 
             prevLine = currentLine;
         }
-
+        
         return builder;
     }
 }

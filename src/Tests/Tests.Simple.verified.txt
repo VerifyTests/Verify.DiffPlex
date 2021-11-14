@@ -12,5 +12,4 @@ Compare Result:
   text
 
 
-
 }

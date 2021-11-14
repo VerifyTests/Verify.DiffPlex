@@ -19,7 +19,7 @@ https://nuget.org/packages/Verify.DiffPlex/
 
 ### Initialize
 
-Call `VerifyDiffPlex.Initialize()` once at assembly load time to get the default (full) diff output. Alternatively, you can use `VerifyDiffPlex.Initialize(OutputType.Full)` or `VerifyDiffPlex.Initialize(OutputType.Compact)` to specify the type of output (see below).
+Call `VerifyDiffPlex.Initialize()` once at assembly load time to get the default (full) diff output. Alternatively, use `VerifyDiffPlex.Initialize(OutputType.Full)` or `VerifyDiffPlex.Initialize(OutputType.Compact)` to specify the type of output (see below).
 
 
 ### Verify text
@@ -82,7 +82,7 @@ The library currently supports two different types of diff outputs; the desired 
   Eighth line
 ```
 
-This output type gives the most information, but if your verified files are long, it can be difficult to read through and find the actual differences. `OutputType.Compact` will show only the changed lines, with one line of context (with line number) before and after each changed section to help identify where the change is. The `Full` output above would look like this as `Compact`.
+This output type gives the most information, but if verified files are long, it can be difficult to read through and find the actual differences. `OutputType.Compact` will show only the changed lines, with one line of context (with line number) before and after each changed section to help identify where the change is. The `Full` output above would look like this as `Compact`.
 
 ```
 1 First line

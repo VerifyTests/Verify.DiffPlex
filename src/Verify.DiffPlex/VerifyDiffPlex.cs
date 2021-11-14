@@ -8,7 +8,7 @@ public enum OutputType { Full, Compact }
 public static class VerifyDiffPlex
 {
     public static void Initialize() => Initialize(OutputType.Full);
-    
+
     public static void Initialize(OutputType outputType)
     {
         Func<string, string, StringBuilder> compareFunc = outputType switch
@@ -16,17 +16,17 @@ public static class VerifyDiffPlex
             OutputType.Compact => CompactCompare,
             _ => VerboseCompare,
         };
-        
+
         VerifierSettings.SetDefaultStringComparer((received, verified, _) =>
         {
             var builder = compareFunc(received, verified);
-            
+
             var compareResult = CompareResult.NotEqual(builder.ToString());
             return Task.FromResult(compareResult);
         });
     }
 
-    private static StringBuilder VerboseCompare(string received, string verified)
+    static StringBuilder VerboseCompare(string received, string verified)
     {
         var diff = InlineDiffBuilder.Diff(verified, received);
 
@@ -45,21 +45,22 @@ public static class VerifyDiffPlex
                     builder.Append("  ");
                     break;
             }
+
             builder.AppendLine(line.Text);
         }
 
         return builder;
     }
 
-    private static StringBuilder CompactCompare(string received, string verified)
+    static StringBuilder CompactCompare(string received, string verified)
     {
         var diff = InlineDiffBuilder.Diff(verified, received);
         var builder = new StringBuilder();
 
         var prefixLength = diff.Lines.Max(l => l.Position).ToString().Length;
-        var spacePrefix = new String(' ', prefixLength - 1);
+        var spacePrefix = new string(' ', prefixLength - 1);
 
-        bool IsChanged(DiffPiece? line) => line?.Type == ChangeType.Inserted || line?.Type == ChangeType.Deleted;
+        static bool IsChanged(DiffPiece? line) => line?.Type is ChangeType.Inserted or ChangeType.Deleted;
 
         void AddDiffLine(int? lineNumber, string symbol, string text)
         {
@@ -68,9 +69,9 @@ public static class VerifyDiffPlex
         }
 
         DiffPiece? prevLine = null;
-        int lastIndex = diff.Lines.Count - 1;
+        var lastIndex = diff.Lines.Count - 1;
 
-        for (int i = 0; i <= lastIndex; i++)
+        for (var i = 0; i <= lastIndex; i++)
         {
             var currentLine = diff.Lines[i];
             var nextLine = i < lastIndex
@@ -80,19 +81,25 @@ public static class VerifyDiffPlex
             if (IsChanged(currentLine))
             {
                 if (i == 0)
+                {
                     AddDiffLine(null, " ", "[BOF]");
+                }
 
                 var symbol = currentLine.Type == ChangeType.Inserted ? "+" : "-";
                 AddDiffLine(null, symbol, currentLine.Text);
 
                 if (i == lastIndex)
+                {
                     AddDiffLine(null, " ", "[EOF]");
+                }
             }
             else if (IsChanged(prevLine) || IsChanged(nextLine))
             {
                 AddDiffLine(currentLine.Position, " ", currentLine.Text);
                 if (!IsChanged(nextLine))
+                {
                     builder.AppendLine();
+                }
             }
 
             prevLine = currentLine;

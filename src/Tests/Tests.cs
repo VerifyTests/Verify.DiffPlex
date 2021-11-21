@@ -9,8 +9,7 @@ public class Tests
     {
         VerifierSettings.DisableClipboard();
         VerifierSettings.ScrubLinesContaining("DiffEngineTray");
-        VerifierSettings.ModifySerialization(
-            settings => settings.IgnoreMember<Exception>(_ => _.StackTrace));
+        VerifierSettings.IgnoreStackTrack();
     }
 
     [Test]

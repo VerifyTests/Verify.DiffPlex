@@ -35,7 +35,7 @@ text",
         var target = @"The
 after
 text";
-        return Verifier.Verify(target);
+        return Verify(target);
     }
 
     [Test]

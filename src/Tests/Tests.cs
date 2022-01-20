@@ -1,8 +1,4 @@
-﻿using VerifyTests;
-using VerifyNUnit;
-using NUnit.Framework;
-
-[TestFixture]
+﻿[TestFixture]
 public class Tests
 {
     static Tests()
@@ -20,8 +16,8 @@ public class Tests
         settings.UseMethodName("Foo");
         settings.DisableDiff();
 
-        return Verifier.ThrowsTask(() =>
-                Verifier.Verify(
+        return ThrowsTask(() =>
+                Verify(
                     @"The
 after
 text",
@@ -46,8 +42,8 @@ text";
         settings.UseMethodName("Bar");
         settings.DisableDiff();
 
-        return Verifier.ThrowsTask(() =>
-                Verifier.Verify(
+        return ThrowsTask(() =>
+                Verify(
                     @"Line 1 changed
 Line 2
 Line 3

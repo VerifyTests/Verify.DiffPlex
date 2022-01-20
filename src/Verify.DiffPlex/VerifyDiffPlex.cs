@@ -103,7 +103,7 @@ public static class VerifyDiffPlex
 
             prevLine = currentLine;
         }
-        
+
         return builder;
     }
 }

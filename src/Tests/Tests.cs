@@ -5,7 +5,7 @@ public class Tests
     {
         VerifierSettings.DisableClipboard();
         VerifierSettings.ScrubLinesContaining("DiffEngineTray");
-        VerifierSettings.IgnoreStackTrack();
+        VerifierSettings.IgnoreStackTrace();
     }
 
     [Test]

@@ -3,7 +3,6 @@ public class Tests
 {
     static Tests()
     {
-        VerifierSettings.DisableClipboard();
         VerifierSettings.ScrubLinesContaining("DiffEngineTray");
         VerifierSettings.IgnoreStackTrace();
     }

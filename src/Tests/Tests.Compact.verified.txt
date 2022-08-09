@@ -1,9 +1,16 @@
 ﻿{
   Type: VerifyException,
   Message:
-Results do not match.
-Differences:
-Received: Tests.Bar.received.txt
+Directory: {ProjectDirectory}
+NotEqual:
+  - Received: Tests.Bar.DotNet6_0.received.txt
+    Verified: Tests.Bar.verified.txt
+
+FileContent:
+
+NotEqual:
+
+Received: Tests.Bar.DotNet6_0.received.txt
 Verified: Tests.Bar.verified.txt
 Compare Result:
    [BOF]
@@ -26,4 +33,6 @@ Compare Result:
  + Line 11 changed
  + Line 12 changed
    [EOF]
+
+
 }

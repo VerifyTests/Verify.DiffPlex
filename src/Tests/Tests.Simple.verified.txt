@@ -1,13 +1,22 @@
 ﻿{
   Type: VerifyException,
   Message:
-Results do not match.
-Differences:
-Received: Tests.Foo.received.txt
+Directory: {ProjectDirectory}
+NotEqual:
+  - Received: Tests.Foo.DotNet6_0.received.txt
+    Verified: Tests.Foo.verified.txt
+
+FileContent:
+
+NotEqual:
+
+Received: Tests.Foo.DotNet6_0.received.txt
 Verified: Tests.Foo.verified.txt
 Compare Result:
   The
 - before
 + after
   text
+
+
 }

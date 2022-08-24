@@ -16,11 +16,11 @@ public class Tests
         settings.DisableDiff();
 
         return ThrowsTask(() =>
-                Verify(
-                    @"The
+            Verify(
+                @"The
 after
 text",
-                    settings));
+                settings));
     }
 
     [Test]
@@ -42,8 +42,8 @@ text";
         settings.DisableDiff();
 
         return ThrowsTask(() =>
-                Verify(
-                    @"Line 1 changed
+            Verify(
+                @"Line 1 changed
 Line 2
 Line 3
 Line 4
@@ -56,6 +56,6 @@ Line 9
 Line 10
 Line 11 changed
 Line 12 changed",
-                    settings));
+                settings));
     }
 }

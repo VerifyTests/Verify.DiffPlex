@@ -11,16 +11,13 @@ public class Tests
     public Task Simple()
     {
         VerifyDiffPlex.Initialize();
-        var settings = new VerifySettings();
-        settings.UseMethodName("Foo");
-        settings.DisableDiff();
-
         return ThrowsTask(() =>
                 Verify(
                     @"The
 after
-text",
-                    settings));
+text"))
+            .UseMethodName("Foo")
+            .DisableDiff();
     }
 
     [Test]
@@ -37,10 +34,6 @@ text";
     public Task Compact()
     {
         VerifyDiffPlex.Initialize(OutputType.Compact);
-        var settings = new VerifySettings();
-        settings.UseMethodName("Bar");
-        settings.DisableDiff();
-
         return ThrowsTask(() =>
                 Verify(
                     @"Line 1 changed
@@ -55,7 +48,8 @@ Line 8
 Line 9
 Line 10
 Line 11 changed
-Line 12 changed",
-                    settings));
+Line 12 changed"))
+            .UseMethodName("Bar")
+            .DisableDiff();
     }
 }

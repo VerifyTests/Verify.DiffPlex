@@ -1,4 +1,6 @@
-﻿[TestFixture]
+﻿using VerifyTests.DiffPlex;
+
+[TestFixture]
 public class Tests
 {
     static Tests()

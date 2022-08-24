@@ -1,5 +1,6 @@
 ﻿using DiffPlex.DiffBuilder;
 using DiffPlex.DiffBuilder.Model;
+using VerifyTests.DiffPlex;
 
 namespace VerifyTests;
 

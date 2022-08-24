@@ -17,7 +17,18 @@ https://nuget.org/packages/Verify.DiffPlex/
 
 ### Initialize
 
-Call `VerifyDiffPlex.Initialize()` once at assembly load time to get the default (full) diff output. Alternatively, use `VerifyDiffPlex.Initialize(OutputType.Full)` or `VerifyDiffPlex.Initialize(OutputType.Compact)` to specify the type of output (see below).
+Call `VerifyDiffPlex.Initialize()` in a `[ModuleInitializer]`. Alternatively, use `VerifyDiffPlex.Initialize(OutputType.Full)` or `VerifyDiffPlex.Initialize(OutputType.Compact)` to specify the type of output (see below).
+
+```
+public static class ModuleInitializer
+{
+    [ModuleInitializer]
+    public static void Initialize()
+    {
+        VerifyDiffPlex.Initialize();
+    }
+}
+```
 
 
 ### Verify text

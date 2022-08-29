@@ -3,14 +3,14 @@
   Message:
 Directory: {ProjectDirectory}
 NotEqual:
-  - Received: Tests.Foo.DotNet6_0.received.txt
+  - Received: Tests.Foo.received.txt
     Verified: Tests.Foo.verified.txt
 
 FileContent:
 
 NotEqual:
 
-Received: Tests.Foo.DotNet6_0.received.txt
+Received: Tests.Foo.received.txt
 Verified: Tests.Foo.verified.txt
 Compare Result:
   The

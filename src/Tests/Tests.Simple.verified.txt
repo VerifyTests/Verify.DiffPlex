@@ -2,21 +2,18 @@
   Type: VerifyException,
   Message:
 Directory: {ProjectDirectory}
-NotEqual:
+New:
   - Received: Tests.Foo.received.txt
     Verified: Tests.Foo.verified.txt
 
 FileContent:
 
-NotEqual:
+New:
 
 Received: Tests.Foo.received.txt
-Verified: Tests.Foo.verified.txt
-Compare Result:
-  The
-- before
-+ after
-  text
+The
+after
+text
 
 
 }

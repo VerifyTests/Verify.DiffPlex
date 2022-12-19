@@ -10,6 +10,7 @@ public static class VerifyDiffPlex
 
     public static void Initialize(OutputType outputType)
     {
+        InnerVerifier.ThrowIfVerifyHasBeenRun();
         Func<string, string, StringBuilder> compareFunc = outputType switch
         {
             OutputType.Compact => CompactCompare,

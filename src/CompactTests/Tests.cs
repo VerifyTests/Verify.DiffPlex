@@ -5,6 +5,7 @@ public class Tests
 {
     static Tests()
     {
+        VerifyDiffPlex.Initialize(OutputType.Compact);
         VerifierSettings.ScrubLinesContaining("DiffEngineTray");
         VerifierSettings.IgnoreStackTrace();
     }
@@ -12,7 +13,6 @@ public class Tests
     [Test]
     public Task Compact()
     {
-        VerifyDiffPlex.Initialize(OutputType.Compact);
         var settings = new VerifySettings();
         settings.UseMethodName("Bar");
         settings.DisableDiff();

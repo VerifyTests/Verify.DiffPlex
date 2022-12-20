@@ -16,19 +16,22 @@ public class Tests
         settings.DisableDiff();
 
         return ThrowsTask(() =>
-            Verify(
-                @"The
-after
-text",
+            Verify("""
+                    The
+                    after
+                    text
+                    """,
                 settings));
     }
 
     [Test]
     public Task Sample()
     {
-        var target = @"The
-after
-text";
+        var target = """
+            The
+            after
+            text
+            """;
         return Verify(target);
     }
 }

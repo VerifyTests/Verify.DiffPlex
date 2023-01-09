@@ -12,7 +12,17 @@ public class Tests
     public Task Simple()
     {
         var settings = new VerifySettings();
-        settings.UseMethodName("Foo");
+        settings.UseMethodName("SimpleFake");
+        settings.DisableDiff();
+
+        return ThrowsTask(() =>
+            Verify("""
+                    The
+                    after
+                    text
+                    """,
+                settings));
+    }
         settings.DisableDiff();
 
         return ThrowsTask(() =>

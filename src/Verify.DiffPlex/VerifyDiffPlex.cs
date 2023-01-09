@@ -8,24 +8,36 @@ public static class VerifyDiffPlex
 {
     public static void Initialize() => Initialize(OutputType.Full);
 
+    static Func<string, string, StringBuilder> GetCompareFunc(OutputType outputType) =>
+        outputType switch
+        {
+            OutputType.Compact => CompactCompare,
+            _ => VerboseCompare
+        };
+
     public static void Initialize(OutputType outputType)
     {
         InnerVerifier.ThrowIfVerifyHasBeenRun();
-        Func<string, string, StringBuilder> compareFunc = outputType switch
-        {
-            OutputType.Compact => CompactCompare,
-            _ => VerboseCompare,
-        };
-
-        VerifierSettings.SetDefaultStringComparer((received, verified, _) =>
-        {
-            var builder = compareFunc(received, verified);
-            builder.TrimEnd();
-            var message = builder.ToString();
-            var compareResult = CompareResult.NotEqual(message);
-            return Task.FromResult(compareResult);
-        });
+        VerifierSettings.SetDefaultStringComparer((received, verified, _) => GetResult(outputType, received, verified));
     }
+
+    static Task<CompareResult> GetResult(OutputType outputType, string received, string verified)
+    {
+        var compare = GetCompareFunc(outputType);
+        var builder = compare(received, verified);
+        builder.TrimEnd();
+        var message = builder.ToString();
+        var result = CompareResult.NotEqual(message);
+        return Task.FromResult(result);
+    }
+
+    public static void UseDiffPlex(this VerifySettings settings, OutputType outputType = OutputType.Full) =>
+        settings.UseStringComparer(
+            (received, verified, _) => GetResult(outputType, received, verified));
+
+    public static SettingsTask UseDiffPlex(this SettingsTask settings, OutputType outputType = OutputType.Full) =>
+        settings.UseStringComparer(
+            (received, verified, _) => GetResult(outputType, received, verified));
 
     static StringBuilder VerboseCompare(string received, string verified)
     {

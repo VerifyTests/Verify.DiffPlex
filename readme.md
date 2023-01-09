@@ -104,3 +104,39 @@ This output type gives the most information, but if verified files are long, it 
 + Sixth line changed
 7 Seventh line
 ```
+
+
+### Test level settings
+
+DiffPlex can be used at the test leved:
+
+<!-- snippet: TestLevelUsage -->
+<a id='snippet-testlevelusage'></a>
+```cs
+[Test]
+public Task TestLevelUsage()
+{
+    var target = "The text";
+    var settings = new VerifySettings();
+    settings.UseDiffPlex();
+    return Verify(target, settings);
+}
+```
+<sup><a href='/src/Tests/Tests.cs#L97-L108' title='Snippet source file'>snippet source</a> | <a href='#snippet-testlevelusage' title='Start of snippet'>anchor</a></sup>
+<!-- endSnippet -->
+
+Or Fluently
+
+<!-- snippet: TestLevelUsageFluent -->
+<a id='snippet-testlevelusagefluent'></a>
+```cs
+[Test]
+public Task TestLevelUsageFluent()
+{
+    var target = "The text";
+    return Verify(target)
+        .UseDiffPlex();
+}
+```
+<sup><a href='/src/Tests/Tests.cs#L110-L120' title='Snippet source file'>snippet source</a> | <a href='#snippet-testlevelusagefluent' title='Start of snippet'>anchor</a></sup>
+<!-- endSnippet -->

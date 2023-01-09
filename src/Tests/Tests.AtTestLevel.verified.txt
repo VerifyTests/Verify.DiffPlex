@@ -1,0 +1,22 @@
+﻿{
+  Type: VerifyException,
+  Message:
+Directory: {ProjectDirectory}
+NotEqual:
+  - Received: Tests.AtTestLevelFake.received.txt
+    Verified: Tests.AtTestLevelFake.verified.txt
+
+FileContent:
+
+NotEqual:
+
+Received: Tests.AtTestLevelFake.received.txt
+Verified: Tests.AtTestLevelFake.verified.txt
+Compare Result:
+  The
+- before
++ after
+  text
+
+
+}

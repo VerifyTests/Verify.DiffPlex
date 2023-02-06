@@ -3,13 +3,6 @@
 [TestFixture]
 public class Tests
 {
-    static Tests()
-    {
-        VerifierSettings.ScrubLinesContaining("DiffEngineTray");
-        VerifierSettings.IgnoreStackTrace();
-        VerifyDiffPlex.Initialize();
-    }
-
     [Test]
     public Task Simple()
     {

@@ -6,6 +6,8 @@ namespace VerifyTests;
 
 public static class VerifyDiffPlex
 {
+    public static bool Initialized { get; private set; }
+
     public static void Initialize() => Initialize(OutputType.Full);
 
     static Func<string, string, StringBuilder> GetCompareFunc(OutputType outputType) =>
@@ -17,6 +19,12 @@ public static class VerifyDiffPlex
 
     public static void Initialize(OutputType outputType)
     {
+        if (Initialized)
+        {
+            throw new("Already Initialized");
+        }
+
+        Initialized = true;
         InnerVerifier.ThrowIfVerifyHasBeenRun();
         VerifierSettings.SetDefaultStringComparer((received, verified, _) => GetResult(outputType, received, verified));
     }

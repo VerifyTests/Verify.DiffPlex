@@ -19,16 +19,28 @@ https://nuget.org/packages/Verify.DiffPlex/
 
 Call `VerifyDiffPlex.Initialize()` in a `[ModuleInitializer]`. Alternatively, use `VerifyDiffPlex.Initialize(OutputType.Full)` or `VerifyDiffPlex.Initialize(OutputType.Compact)` to specify the type of output (see below).
 
-```
+<!-- snippet: ModuleInitializer.cs -->
+<a id='snippet-ModuleInitializer.cs'></a>
+```cs
 public static class ModuleInitializer
 {
+
     [ModuleInitializer]
-    public static void Initialize()
-    {
+    public static void Initialize() =>
         VerifyDiffPlex.Initialize();
+
+
+    [ModuleInitializer]
+    public static void OtherInitialize()
+    {
+        VerifierSettings.InitializePlugins();
+        VerifierSettings.ScrubLinesContaining("DiffEngineTray");
+        VerifierSettings.IgnoreStackTrace();
     }
 }
 ```
+<sup><a href='/src/Tests/ModuleInitializer.cs#L1-L16' title='Snippet source file'>snippet source</a> | <a href='#snippet-ModuleInitializer.cs' title='Start of snippet'>anchor</a></sup>
+<!-- endSnippet -->
 
 
 ### Verify text
@@ -122,7 +134,7 @@ public Task TestLevelUsage()
     return Verify(target, settings);
 }
 ```
-<sup><a href='/src/Tests/Tests.cs#L97-L108' title='Snippet source file'>snippet source</a> | <a href='#snippet-testlevelusage' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Tests.cs#L90-L101' title='Snippet source file'>snippet source</a> | <a href='#snippet-testlevelusage' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 Or Fluently
@@ -138,5 +150,5 @@ public Task TestLevelUsageFluent()
         .UseDiffPlex();
 }
 ```
-<sup><a href='/src/Tests/Tests.cs#L110-L120' title='Snippet source file'>snippet source</a> | <a href='#snippet-testlevelusagefluent' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Tests.cs#L103-L113' title='Snippet source file'>snippet source</a> | <a href='#snippet-testlevelusagefluent' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->

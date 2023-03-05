@@ -89,6 +89,16 @@ Compare Result:
 
 The library currently supports two different types of diff outputs; the desired type can be specified during library initialization.
 
+<!-- snippet: OutputTypeCompact -->
+<a id='snippet-outputtypecompact'></a>
+```cs
+[ModuleInitializer]
+public static void Init() =>
+    VerifyDiffPlex.Initialize(OutputType.Compact);
+```
+<sup><a href='/src/CompactTests/Tests.cs#L6-L12' title='Snippet source file'>snippet source</a> | <a href='#snippet-outputtypecompact' title='Start of snippet'>anchor</a></sup>
+<!-- endSnippet -->
+
 `OutputType.Full` is the default. It shows the full contents of the received file, with differences with the received file indicated by `+` and `-`. Here's an example of `Full` output.
 
 ```

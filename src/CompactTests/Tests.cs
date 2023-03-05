@@ -3,9 +3,17 @@
 [TestFixture]
 public class Tests
 {
-    static Tests()
-    {
+    #region OutputTypeCompact
+
+    [ModuleInitializer]
+    public static void Init() =>
         VerifyDiffPlex.Initialize(OutputType.Compact);
+
+    #endregion
+
+    [ModuleInitializer]
+    public static void OtherInit()
+    {
         VerifierSettings.ScrubLinesContaining("DiffEngineTray");
         VerifierSettings.IgnoreStackTrace();
     }

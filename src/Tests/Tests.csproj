@@ -4,11 +4,11 @@
     <TargetFramework>net7.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Argon" Version="0.5.2" />
+    <PackageReference Include="Argon" Version="0.6.0" />
     <PackageReference Include="MarkdownSnippets.MsBuild" Version="24.5.1" />
     <PackageReference Include="NUnit" Version="3.13.3" />
     <PackageReference Include="NUnit3TestAdapter" Version="4.4.2" />
-    <PackageReference Include="Verify.NUnit" Version="19.12.3" />
+    <PackageReference Include="Verify.NUnit" Version="19.13.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.5.0" />
     <ProjectReference Include="..\Verify.DiffPlex\Verify.DiffPlex.csproj" />
     <PackageReference Include="ProjectDefaults" Version="1.0.90" PrivateAssets="all" />

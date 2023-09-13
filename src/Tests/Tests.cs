@@ -11,11 +11,12 @@ public class Tests
         settings.DisableDiff();
 
         return ThrowsTask(() =>
-            Verify("""
-                    The
-                    after
-                    text
-                    """,
+            Verify(
+                """
+                The
+                after
+                text
+                """,
                 settings));
     }
 
@@ -28,11 +29,12 @@ public class Tests
         settings.UseDiffPlex();
 
         return ThrowsTask(() =>
-            Verify("""
-                    The
-                    after
-                    text
-                    """,
+            Verify(
+                """
+                The
+                after
+                text
+                """,
                 settings));
     }
 
@@ -45,34 +47,35 @@ public class Tests
         settings.UseDiffPlex(OutputType.Compact);
 
         return ThrowsTask(() =>
-            Verify("""
-                    The
-                    The
-                    The
-                    The
-                    The
-                    The
-                    The
-                    The
-                    The
-                    The
-                    The
-                    The
-                    The
-                    after
-                    text
-                    text
-                    text
-                    text
-                    text
-                    text
-                    text
-                    text
-                    text
-                    text
-                    text
-                    text
-                    """,
+            Verify(
+                """
+                The
+                The
+                The
+                The
+                The
+                The
+                The
+                The
+                The
+                The
+                The
+                The
+                The
+                after
+                text
+                text
+                text
+                text
+                text
+                text
+                text
+                text
+                text
+                text
+                text
+                text
+                """,
                 settings));
     }
 
@@ -80,10 +83,10 @@ public class Tests
     public Task Sample()
     {
         var target = """
-            The
-            after
-            text
-            """;
+                     The
+                     after
+                     text
+                     """;
         return Verify(target);
     }
 

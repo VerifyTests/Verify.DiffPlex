@@ -1,8 +1,4 @@
-﻿using DiffPlex.DiffBuilder;
-using DiffPlex.DiffBuilder.Model;
-using VerifyTests.DiffPlex;
-
-namespace VerifyTests;
+﻿namespace VerifyTests;
 
 public static class VerifyDiffPlex
 {
@@ -78,7 +74,8 @@ public static class VerifyDiffPlex
         var diff = InlineDiffBuilder.Diff(verified, received);
         var builder = new StringBuilder();
 
-        var prefixLength = diff.Lines.Max(l => l.Position).ToString().Length;
+        // ReSharper disable once RedundantSuppressNullableWarningExpression
+        var prefixLength = diff.Lines.Max(_ => _.Position).ToString()!.Length;
         var spacePrefix = new string(' ', prefixLength - 1);
 
         static bool IsChanged(DiffPiece? line) => line?.Type is ChangeType.Inserted or ChangeType.Deleted;

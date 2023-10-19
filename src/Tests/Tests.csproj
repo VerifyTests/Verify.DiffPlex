@@ -11,6 +11,6 @@
     <PackageReference Include="Verify.NUnit" Version="22.1.4" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.7.2" />
     <ProjectReference Include="..\Verify.DiffPlex\Verify.DiffPlex.csproj" />
-    <PackageReference Include="ProjectDefaults" Version="1.0.100" PrivateAssets="all" />
+    <PackageReference Include="ProjectDefaults" Version="1.0.101" PrivateAssets="all" />
   </ItemGroup>
 </Project>

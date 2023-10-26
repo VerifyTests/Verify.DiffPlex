@@ -116,7 +116,7 @@ public static void Init() =>
   Eighth line
 ```
 
-This output type gives the most information, but if verified files are long, it can be difficult to read through and find the actual differences. `OutputType.Compact` will show only the changed lines, with one line of context (with line number) before and after each changed section to help identify where the change is. The `Full` output above would look like this as `Compact`.
+This output type gives the most information, but if verified files are long, it can be difficult to read through and find the actual differences. `OutputType.Compact` will show only the changed lines, with one line of context (with line number) before and after each changed section to help identify where the change is.
 
 ```
 1 First line
@@ -130,7 +130,7 @@ This output type gives the most information, but if verified files are long, it 
 7 Seventh line
 ```
 
-Lastly, there is `OutputType.Minimal` which will show only the changed lines. Here is how the `Full` output looks like in `Minimal` mode.
+Lastly, there is `OutputType.Minimal` which will show only the changed lines.
 
 ```
 - Second line

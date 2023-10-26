@@ -10,6 +10,7 @@ public static class VerifyDiffPlex
         outputType switch
         {
             OutputType.Compact => CompactCompare,
+            OutputType.Minimal => MinimalCompare,
             _ => VerboseCompare
         };
 
@@ -61,6 +62,32 @@ public static class VerifyDiffPlex
                 default:
                     builder.Append("  ");
                     break;
+            }
+
+            builder.AppendLine(line.Text);
+        }
+
+        return builder;
+    }
+
+    static StringBuilder MinimalCompare(string received, string verified)
+    {
+        var diff = InlineDiffBuilder.Diff(verified, received);
+
+        var builder = new StringBuilder();
+        foreach (var line in diff.Lines)
+        {
+            switch (line.Type)
+            {
+                case ChangeType.Inserted:
+                    builder.Append("+ ");
+                    break;
+                case ChangeType.Deleted:
+                    builder.Append("- ");
+                    break;
+                default:
+                    // omit unchanged files
+                    continue;
             }
 
             builder.AppendLine(line.Text);

@@ -80,6 +80,24 @@ public class Tests
     }
 
     [Test]
+    public Task AtTestLevelMinimal()
+    {
+        var settings = new VerifySettings();
+        settings.UseMethodName("AtTestLevelMinimalFake");
+        settings.DisableDiff();
+        settings.UseDiffPlex(OutputType.Minimal);
+
+        return ThrowsTask(() =>
+            Verify(
+                """
+                The
+                after
+                text
+                """,
+                settings));
+    }
+
+    [Test]
     public Task Sample()
     {
         var target = """

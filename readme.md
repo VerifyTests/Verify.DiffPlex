@@ -20,7 +20,7 @@ https://nuget.org/packages/Verify.DiffPlex/
 
 ### Initialize
 
-Call `VerifyDiffPlex.Initialize()` in a `[ModuleInitializer]`. Alternatively, use `VerifyDiffPlex.Initialize(OutputType.Full)` or `VerifyDiffPlex.Initialize(OutputType.Compact)` to specify the type of output (see below).
+Call `VerifyDiffPlex.Initialize()` in a `[ModuleInitializer]`. Alternatively, use `VerifyDiffPlex.Initialize(OutputType.Full)`, `VerifyDiffPlex.Initialize(OutputType.Compact)` or `VerifyDiffPlex.Initialize(OutputType.Minimal)` to specify the type of output (see below).
 
 <!-- snippet: ModuleInitializer.cs -->
 <a id='snippet-ModuleInitializer.cs'></a>
@@ -89,7 +89,7 @@ Compare Result:
 
 ### Output types
 
-The library currently supports two different types of diff outputs; the desired type can be specified during library initialization.
+The library currently supports three different types of diff outputs; the desired type can be specified during library initialization.
 
 <!-- snippet: OutputTypeCompact -->
 <a id='snippet-outputtypecompact'></a>
@@ -116,7 +116,7 @@ public static void Init() =>
   Eighth line
 ```
 
-This output type gives the most information, but if verified files are long, it can be difficult to read through and find the actual differences. `OutputType.Compact` will show only the changed lines, with one line of context (with line number) before and after each changed section to help identify where the change is. The `Full` output above would look like this as `Compact`.
+This output type gives the most information, but if verified files are long, it can be difficult to read through and find the actual differences. `OutputType.Compact` will show only the changed lines, with one line of context (with line number) before and after each changed section to help identify where the change is.
 
 ```
 1 First line
@@ -128,6 +128,15 @@ This output type gives the most information, but if verified files are long, it 
 - Sixth line
 + Sixth line changed
 7 Seventh line
+```
+
+Lastly, there is `OutputType.Minimal` which will show only the changed lines.
+
+```
+- Second line
++ Second line changed
+- Sixth line
++ Sixth line changed
 ```
 
 
@@ -147,7 +156,7 @@ public Task TestLevelUsage()
     return Verify(target, settings);
 }
 ```
-<sup><a href='/src/Tests/Tests.cs#L93-L104' title='Snippet source file'>snippet source</a> | <a href='#snippet-testlevelusage' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Tests.cs#L111-L122' title='Snippet source file'>snippet source</a> | <a href='#snippet-testlevelusage' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 Or Fluently
@@ -163,5 +172,5 @@ public Task TestLevelUsageFluent()
         .UseDiffPlex();
 }
 ```
-<sup><a href='/src/Tests/Tests.cs#L106-L116' title='Snippet source file'>snippet source</a> | <a href='#snippet-testlevelusagefluent' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Tests.cs#L124-L134' title='Snippet source file'>snippet source</a> | <a href='#snippet-testlevelusagefluent' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->

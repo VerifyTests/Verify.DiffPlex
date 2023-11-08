@@ -5,7 +5,7 @@
   <ItemGroup>
     <PackageReference Include="Argon" Version="0.13.0" />
     <PackageReference Include="DiffPlex" Version="1.7.1" />
-    <PackageReference Include="Polyfill" Version="1.30.0" PrivateAssets="all" />
+    <PackageReference Include="Polyfill" Version="1.31.0" PrivateAssets="all" />
     <PackageReference Include="Verify" Version="22.1.4" />
     <PackageReference Include="ProjectDefaults" Version="1.0.101" PrivateAssets="all" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" Condition="$(Configuration) == 'Release'" />

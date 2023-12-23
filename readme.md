@@ -141,7 +141,7 @@ Lastly, there is `OutputType.Minimal` which will show only the changed lines.
 
 ### Test level settings
 
-DiffPlex can be used at the test leved:
+DiffPlex can be used at the test level:
 
 <!-- snippet: TestLevelUsage -->
 <a id='snippet-testlevelusage'></a>

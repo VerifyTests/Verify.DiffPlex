@@ -91,13 +91,13 @@ Compare Result:
 The library currently supports three different types of diff outputs; the desired type can be specified during library initialization.
 
 <!-- snippet: OutputTypeCompact -->
-<a id='snippet-outputtypecompact'></a>
+<a id='snippet-OutputTypeCompact'></a>
 ```cs
 [ModuleInitializer]
 public static void Init() =>
     VerifyDiffPlex.Initialize(OutputType.Compact);
 ```
-<sup><a href='/src/CompactTests/Tests.cs#L6-L12' title='Snippet source file'>snippet source</a> | <a href='#snippet-outputtypecompact' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/CompactTests/Tests.cs#L6-L12' title='Snippet source file'>snippet source</a> | <a href='#snippet-OutputTypeCompact' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 `OutputType.Full` is the default. It shows the full contents of the received file, with differences with the received file indicated by `+` and `-`. Here's an example of `Full` output.
@@ -144,7 +144,7 @@ Lastly, there is `OutputType.Minimal` which will show only the changed lines.
 DiffPlex can be used at the test level:
 
 <!-- snippet: TestLevelUsage -->
-<a id='snippet-testlevelusage'></a>
+<a id='snippet-TestLevelUsage'></a>
 ```cs
 [Test]
 public Task TestLevelUsage()
@@ -155,13 +155,13 @@ public Task TestLevelUsage()
     return Verify(target, settings);
 }
 ```
-<sup><a href='/src/Tests/Tests.cs#L111-L122' title='Snippet source file'>snippet source</a> | <a href='#snippet-testlevelusage' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Tests.cs#L111-L122' title='Snippet source file'>snippet source</a> | <a href='#snippet-TestLevelUsage' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 Or Fluently
 
 <!-- snippet: TestLevelUsageFluent -->
-<a id='snippet-testlevelusagefluent'></a>
+<a id='snippet-TestLevelUsageFluent'></a>
 ```cs
 [Test]
 public Task TestLevelUsageFluent()
@@ -171,5 +171,5 @@ public Task TestLevelUsageFluent()
         .UseDiffPlex();
 }
 ```
-<sup><a href='/src/Tests/Tests.cs#L124-L134' title='Snippet source file'>snippet source</a> | <a href='#snippet-testlevelusagefluent' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Tests.cs#L124-L134' title='Snippet source file'>snippet source</a> | <a href='#snippet-TestLevelUsageFluent' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->

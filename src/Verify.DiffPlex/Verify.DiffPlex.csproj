@@ -5,8 +5,8 @@
   <ItemGroup>
     <PackageReference Include="Argon" Version="0.17.0" />
     <PackageReference Include="DiffPlex" Version="1.7.2" />
-    <PackageReference Include="Polyfill" Version="4.2.0" PrivateAssets="all" />
-    <PackageReference Include="Verify" Version="23.6.0" />
+    <PackageReference Include="Polyfill" Version="4.3.0" PrivateAssets="all" />
+    <PackageReference Include="Verify" Version="23.7.0" />
     <PackageReference Include="ProjectDefaults" Version="1.0.126" PrivateAssets="all" />
   </ItemGroup>
 </Project>

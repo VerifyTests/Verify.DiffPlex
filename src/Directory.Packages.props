@@ -13,6 +13,6 @@
     <PackageVersion Include="ProjectDefaults" Version="1.0.152" />
     <PackageVersion Include="Verify" Version="30.0.0" />
     <PackageVersion Include="Verify.Nunit" Version="30.0.0" />
-    <PackageVersion Include="Microsoft.Sbom.Targets" Version="3.1.0" />
+    <PackageVersion Include="Microsoft.Sbom.Targets" Version="4.0.2" />
   </ItemGroup>
 </Project>

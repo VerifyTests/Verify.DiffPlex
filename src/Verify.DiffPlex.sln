@@ -18,6 +18,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		mdsnippets.json = mdsnippets.json
 		..\readme.md = ..\readme.md
 		global.json = global.json
+		nuget.md = nuget.md
+		..\docs\intro.include.md = ..\docs\intro.include.md
+		..\docs\zzz.include.md = ..\docs\zzz.include.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompactTests", "CompactTests\CompactTests.csproj", "{97B95710-31B3-4044-A527-D35747C8E2FB}"

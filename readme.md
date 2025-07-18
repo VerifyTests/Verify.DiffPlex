@@ -4,7 +4,7 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/9ug1ufa69m4vf4ph?svg=true)](https://ci.appveyor.com/project/SimonCropp/Verify-DiffPlex)
 [![NuGet Status](https://img.shields.io/nuget/v/Verify.DiffPlex.svg)](https://www.nuget.org/packages/Verify.DiffPlex/)
 
-Extends [Verify](https://github.com/VerifyTests/Verify) to allow [comparison](https://github.com/VerifyTests/Verify/blob/master/docs/comparer.md) of text via [DiffPlex](https://github.com/mmanela/diffplex).
+Extends [Verify](https://github.com/VerifyTests/Verify) to allow [comparison](https://github.com/VerifyTests/Verify/blob/master/docs/comparer.md) of text via [DiffPlex](https://github.com/mmanela/diffplex).<!-- singleLineInclude: intro. path: /docs/intro.include.md -->
 
 **See [Milestones](../../milestones?state=closed) for release notes.**
 
@@ -14,9 +14,9 @@ Extends [Verify](https://github.com/VerifyTests/Verify) to allow [comparison](ht
 
 ### Entity Framework Extensions<!-- include: zzz. path: /docs/zzz.include.md -->
 
-[Entity Framework Extensions](https://entityframework-extensions.net/) is a major sponsor and is proud to contribute to the development this project.
+[Entity Framework Extensions](https://entityframework-extensions.net/?utm_source=simoncropp&utm_medium=Verify.DiffPlex) is a major sponsor and is proud to contribute to the development this project.
 
-[![Entity Framework Extensions](docs/zzz.png)](https://entityframework-extensions.net)<!-- endInclude -->
+[![Entity Framework Extensions](https://raw.githubusercontent.com/VerifyTests/Verify.DiffPlex/refs/heads/main/docs/zzz.png)](https://entityframework-extensions.net/?utm_source=simoncropp&utm_medium=Verify.DiffPlex)<!-- endInclude -->
 
 
 ## NuGet

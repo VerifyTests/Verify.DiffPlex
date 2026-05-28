@@ -13,10 +13,10 @@ NotEqual:
 Received: Tests.SimpleFake.received.txt
 Verified: Tests.SimpleFake.verified.txt
 Compare Result:
-  The
+1 The
 - before
 + after
-  text
+3 text
 
 
 }

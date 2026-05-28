@@ -85,7 +85,7 @@ text";
 
 ### Diff results
 
-When the comparison fails, the resulting differences will be included in the test result displayed to the user. This example shows the `Full` style of output.
+When the comparison fails, the resulting differences will be included in the test result displayed to the user. This example shows the `Compact` style of output (the default).
 
 ```txt
 Results do not match.
@@ -93,10 +93,10 @@ Differences:
 Received: Tests.Sample.received.txt
 Verified: Tests.Sample.verified.txt
 Compare Result:
-  The
+1 The
 - before
 + after
-  text
+3 text
 ```
 
 
@@ -114,7 +114,21 @@ public static void Init() =>
 <sup><a href='/src/CompactTests/Tests.cs#L6-L12' title='Snippet source file'>snippet source</a> | <a href='#snippet-OutputTypeCompact' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
-`OutputType.Full` is the default. It shows the full contents of the received file, with differences with the received file indicated by `+` and `-`. Here's an example of `Full` output.
+`OutputType.Compact` is the default. It shows only the changed lines, with one line of context (with line number) before and after each changed section to help identify where the change is.
+
+```
+1 First line
+- Second line
++ Second line changed
+3 Third line
+
+5 Fifth line
+- Sixth line
++ Sixth line changed
+7 Seventh line
+```
+
+`OutputType.Full` shows the full contents of the received file, with differences with the received file indicated by `+` and `-`. This output type gives the most information, but if verified files are long, it can be difficult to read through and find the actual differences.
 
 ```
   First line
@@ -127,20 +141,6 @@ public static void Init() =>
 + Sixth line changed
   Seventh line
   Eighth line
-```
-
-This output type gives the most information, but if verified files are long, it can be difficult to read through and find the actual differences. `OutputType.Compact` will show only the changed lines, with one line of context (with line number) before and after each changed section to help identify where the change is.
-
-```
-1 First line
-- Second line
-+ Second line changed
-3 Third line
-
-5 Fifth line
-- Sixth line
-+ Sixth line changed
-7 Seventh line
 ```
 
 Lastly, there is `OutputType.Minimal` which will show only the changed lines.

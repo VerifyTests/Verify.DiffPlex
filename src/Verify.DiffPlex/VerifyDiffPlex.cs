@@ -4,14 +4,14 @@ public static class VerifyDiffPlex
 {
     public static bool Initialized { get; private set; }
 
-    public static void Initialize() => Initialize(OutputType.Full);
+    public static void Initialize() => Initialize(OutputType.Compact);
 
     static Func<string, string, StringBuilder> GetCompareFunc(OutputType outputType) =>
         outputType switch
         {
-            OutputType.Compact => CompactCompare,
+            OutputType.Full => VerboseCompare,
             OutputType.Minimal => MinimalCompare,
-            _ => VerboseCompare
+            _ => CompactCompare
         };
 
     public static void Initialize(OutputType outputType)
@@ -36,11 +36,11 @@ public static class VerifyDiffPlex
         return Task.FromResult(result);
     }
 
-    public static void UseDiffPlex(this VerifySettings settings, OutputType outputType = OutputType.Full) =>
+    public static void UseDiffPlex(this VerifySettings settings, OutputType outputType = OutputType.Compact) =>
         settings.UseStringComparer(
             (received, verified, _) => GetResult(outputType, received, verified));
 
-    public static SettingsTask UseDiffPlex(this SettingsTask settings, OutputType outputType = OutputType.Full) =>
+    public static SettingsTask UseDiffPlex(this SettingsTask settings, OutputType outputType = OutputType.Compact) =>
         settings.UseStringComparer(
             (received, verified, _) => GetResult(outputType, received, verified));
 

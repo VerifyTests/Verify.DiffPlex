@@ -86,6 +86,7 @@ public class Tests
         settings.UseMethodName("CompactEmptyReceivedFake");
         settings.DisableDiff();
         settings.UseDiffPlex(OutputType.Compact);
+        // Scrub every line so the received content is empty. The resulting diff is all
         // deletions (every line has a null Position), which used to throw
         // ArgumentOutOfRangeException in the Compact formatter.
         settings.ScrubLines(_ => true);

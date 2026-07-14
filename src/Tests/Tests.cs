@@ -80,6 +80,27 @@ public class Tests
     }
 
     [Test]
+    public Task CompactEmptyReceived()
+    {
+        var settings = new VerifySettings();
+        settings.UseMethodName("CompactEmptyReceivedFake");
+        settings.DisableDiff();
+        settings.UseDiffPlex(OutputType.Compact);
+        // deletions (every line has a null Position), which used to throw
+        // ArgumentOutOfRangeException in the Compact formatter.
+        settings.ScrubLines(_ => true);
+
+        return ThrowsTask(() =>
+            Verify(
+                """
+                First
+                Second
+                Third
+                """,
+                settings));
+    }
+
+    [Test]
     public Task AtTestLevelMinimal()
     {
         var settings = new VerifySettings();

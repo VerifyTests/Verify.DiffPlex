@@ -169,7 +169,7 @@ public Task TestLevelUsage()
     return Verify(target, settings);
 }
 ```
-<sup><a href='/src/Tests/Tests.cs#L111-L122' title='Snippet source file'>snippet source</a> | <a href='#snippet-TestLevelUsage' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Tests.cs#L133-L144' title='Snippet source file'>snippet source</a> | <a href='#snippet-TestLevelUsage' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 Or Fluently
@@ -185,5 +185,5 @@ public Task TestLevelUsageFluent()
         .UseDiffPlex();
 }
 ```
-<sup><a href='/src/Tests/Tests.cs#L124-L134' title='Snippet source file'>snippet source</a> | <a href='#snippet-TestLevelUsageFluent' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Tests.cs#L146-L156' title='Snippet source file'>snippet source</a> | <a href='#snippet-TestLevelUsageFluent' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->

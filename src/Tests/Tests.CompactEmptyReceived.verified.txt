@@ -1,0 +1,23 @@
+﻿{
+  Type: VerifyException,
+  Message:
+Directory: {ProjectDirectory}
+NotEqual:
+  - Received: Tests.CompactEmptyReceivedFake.received.txt
+    Verified: Tests.CompactEmptyReceivedFake.verified.txt
+
+FileContent:
+
+NotEqual:
+
+Received: Tests.CompactEmptyReceivedFake.received.txt
+Verified: Tests.CompactEmptyReceivedFake.verified.txt
+Compare Result:
+  [BOF]
+- First
+- Second
+- Third
+  [EOF]
+
+
+}

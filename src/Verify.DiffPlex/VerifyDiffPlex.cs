@@ -101,8 +101,11 @@ public static class VerifyDiffPlex
         var diff = InlineDiffBuilder.Diff(verified, received);
         var builder = new StringBuilder();
 
-        // ReSharper disable once RedundantSuppressNullableWarningExpression
-        var prefixLength = diff.Lines.Max(_ => _.Position).ToString()!.Length;
+        // Position is null for deleted lines. When the received side is empty the diff is
+        // all deletions, so Max returns null; fall back to 0 (a single-digit width) to avoid
+        // a negative spacePrefix length.
+        var maxPosition = diff.Lines.Max(_ => _.Position) ?? 0;
+        var prefixLength = maxPosition.ToString().Length;
         var spacePrefix = new string(' ', prefixLength - 1);
 
         static bool IsChanged(DiffPiece? line) => line?.Type is ChangeType.Inserted or ChangeType.Deleted;

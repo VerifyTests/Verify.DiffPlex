@@ -1,7 +1,7 @@
 # <img src="/src/icon.png" height="30px"> Verify.DiffPlex
 
 [![Discussions](https://img.shields.io/badge/Verify-Discussions-yellow?svg=true&label=)](https://github.com/orgs/VerifyTests/discussions)
-[![Build status](https://img.shields.io/appveyor/build/SimonCropp/Verify-DiffPlex)](https://ci.appveyor.com/project/SimonCropp/Verify-DiffPlex)
+[![Build status](https://github.com/VerifyTests/Verify.DiffPlex/actions/workflows/build.yml/badge.svg)](https://github.com/VerifyTests/Verify.DiffPlex/actions/workflows/build.yml)
 [![NuGet Status](https://img.shields.io/nuget/v/Verify.DiffPlex.svg)](https://www.nuget.org/packages/Verify.DiffPlex/)
 
 Extends [Verify](https://github.com/VerifyTests/Verify) to allow [comparison](https://github.com/VerifyTests/Verify/blob/master/docs/comparer.md) of text via [DiffPlex](https://github.com/mmanela/diffplex).<!-- singleLineInclude: intro. path: /docs/intro.include.md -->

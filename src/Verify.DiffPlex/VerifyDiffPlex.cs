@@ -2,8 +2,24 @@
 
 public static class VerifyDiffPlex
 {
+    const string initializeObsolete =
+        "Verify now shows a text diff in the exception message by default, in the Compact format. " +
+        "Remove this call and the Verify.DiffPlex package. " +
+        "See https://github.com/VerifyTests/Verify/blob/main/docs/exception-message-format.md#text-diff-format";
+
+    const string initializeWithOutputTypeObsolete =
+        "Verify now shows a text diff in the exception message by default. " +
+        "Use VerifierSettings.UseTextDiffFormat(DiffEngine.TextDiffFormat) to choose Full, Compact or Minimal, and remove the Verify.DiffPlex package. " +
+        "See https://github.com/VerifyTests/Verify/blob/main/docs/exception-message-format.md#text-diff-format";
+
+    const string useDiffPlexObsolete =
+        "Verify now shows a text diff in the exception message by default, in the Compact format. " +
+        "Remove this call. The format can only be set globally, with VerifierSettings.UseTextDiffFormat(DiffEngine.TextDiffFormat). " +
+        "See https://github.com/VerifyTests/Verify/blob/main/docs/exception-message-format.md#text-diff-format";
+
     public static bool Initialized { get; private set; }
 
+    [Obsolete(initializeObsolete)]
     public static void Initialize() => Initialize(OutputType.Compact);
 
     static Func<string, string, StringBuilder> GetCompareFunc(OutputType outputType) =>
@@ -14,6 +30,7 @@ public static class VerifyDiffPlex
             _ => CompactCompare
         };
 
+    [Obsolete(initializeWithOutputTypeObsolete)]
     public static void Initialize(OutputType outputType)
     {
         if (Initialized)
@@ -36,10 +53,12 @@ public static class VerifyDiffPlex
         return Task.FromResult(result);
     }
 
+    [Obsolete(useDiffPlexObsolete)]
     public static void UseDiffPlex(this VerifySettings settings, OutputType outputType = OutputType.Compact) =>
         settings.UseStringComparer(
             (received, verified, _) => GetResult(outputType, received, verified));
 
+    [Obsolete(useDiffPlexObsolete)]
     public static SettingsTask UseDiffPlex(this SettingsTask settings, OutputType outputType = OutputType.Compact) =>
         settings.UseStringComparer(
             (received, verified, _) => GetResult(outputType, received, verified));
